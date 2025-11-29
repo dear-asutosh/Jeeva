@@ -1,5 +1,5 @@
 import Navigation from './components/Navigation';
-import Hero from './components/Hero';
+import { Hero } from './components/Hero';
 import Problem from './components/Problem';
 import Solution from './components/Solution';
 import Features from './components/Features';

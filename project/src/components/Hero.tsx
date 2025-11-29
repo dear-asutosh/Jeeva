@@ -1,49 +1,81 @@
-import { ArrowDown, Play } from 'lucide-react';
-import { EmergencyResponseIllustration } from './illustrations/HeroIllustrations';
+import { Button } from "./ui/button";
+import { Phone, MapPin, Heart } from "lucide-react";
+import { EmergencyResponseIllustration } from "./illustrations/HeroIllustrations";
 
-export default function Hero() {
+export const Hero = () => {
   return (
-    <section
-      id="home"
-      className="min-h-screen flex items-center justify-center bg-gradient-to-b from-white to-[#F9FAFB] px-6"
-    >
-      <div className="max-w-4xl mx-auto text-center">
-        <div className="mb-12">
-          <div className="inline-block mb-8 w-72 h-72 animate-float">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-success/5 to-background -z-10" />
+
+      {/* Grid Pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#3b82f610_1px,transparent_1px),linear-gradient(to_bottom,#3b82f610_1px,transparent_1px)] bg-[size:40px_40px] -z-10" />
+
+      <div className="container mx-auto px-4 py-20">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Column - Content */}
+          <div className="space-y-8 animate-fade-in">
+            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold">
+              <Heart className="w-4 h-4 fill-primary" />
+              <span>Coolest Projects 2025 Winner</span>
+            </div>
+
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+              Find Available{" "}
+              <span className="text-gradient">Hospital Beds</span>{" "}
+              in Seconds
+            </h1>
+
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              During medical emergencies, every second counts. JEEVA connects you to hospitals with available beds instantly—turning 45 minutes of panic into 5 minutes of relief.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all">
+                <a href="#demo">
+                  <MapPin className="w-5 h-5 mr-2" />
+                  Find Hospitals Near You
+                </a>
+              </Button>
+
+              <Button asChild size="lg" variant="outline" className="text-lg px-8 py-6 rounded-xl border-2 hover-lift">
+                <a href="tel:112">
+                  <Phone className="w-5 h-5 mr-2" />
+                  Emergency Call
+                </a>
+              </Button>
+            </div>
+
+            {/* Quick Stats */}
+            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-border">
+              <div>
+                <div className="text-3xl font-bold text-primary">30M+</div>
+                <div className="text-sm text-muted-foreground">People Served</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-success">5+</div>
+                <div className="text-sm text-muted-foreground">Partner Hospitals</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-danger">1000+</div>
+                <div className="text-sm text-muted-foreground">Lives Saved</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column - Illustration */}
+          <div className="relative animate-scale-in">
             <EmergencyResponseIllustration />
           </div>
         </div>
+      </div>
 
-        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-[#1F2937] mb-6 leading-tight tracking-tight">
-          Find Emergency Hospital Beds
-          <br />
-          in Real-Time
-        </h1>
-
-        <p className="text-xl md:text-2xl text-[#6B7280] mb-12 leading-relaxed max-w-2xl mx-auto">
-          Only what you need, when seconds count.
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-20">
-          <a
-            href="#demo"
-            className="bg-[#3B82F6] text-white px-8 py-4 rounded-xl text-lg font-medium hover:bg-[#2563EB] transition-all duration-300 hover:shadow-xl hover:scale-105 inline-flex items-center"
-          >
-            Search Hospital Beds Now
-          </a>
-          <a
-            href="#about"
-            className="bg-white text-[#3B82F6] border-2 border-[#3B82F6] px-8 py-4 rounded-xl text-lg font-medium hover:bg-[#F0F9FF] transition-all duration-300 inline-flex items-center gap-2"
-          >
-            <Play size={20} />
-            Watch How It Works
-          </a>
-        </div>
-
-        <div className="animate-bounce">
-          <ArrowDown size={32} className="mx-auto text-[#3B82F6] opacity-50" />
-        </div>
+      {/* Bottom Wave */}
+      <div className="absolute bottom-0 left-0 right-0">
+        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-20">
+          <path d="M0 0L60 10C120 20 240 40 360 46.7C480 53 600 47 720 43.3C840 40 960 40 1080 46.7C1200 53 1320 67 1380 73.3L1440 80V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0V0Z" fill="hsl(var(--muted))" fillOpacity="0.3" />
+        </svg>
       </div>
     </section>
   );
-}
+};
