@@ -32,7 +32,7 @@ export default function Navigation() {
           <div className="flex items-center">
             <a href="#home" className="flex items-center  ">
               <img
-                src="/assets/img/jeeva.png"
+                src="./assets/img/jeeva.png"
                 alt="JEEVA Logo"
                 className="h-20 md:h-32  w-auto object-contain"
               />
