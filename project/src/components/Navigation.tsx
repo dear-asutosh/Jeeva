@@ -24,17 +24,18 @@ export default function Navigation() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-md' : 'bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md' : 'bg-transparent'
+        }`}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center">
-            <a href="#home" className="flex items-center space-x-2">
-              <div className="text-2xl font-bold text-[#3B82F6] tracking-tight">
-                JEEVA
-              </div>
+            <a href="#home" className="flex items-center  ">
+              <img
+                src="/assets/img/jeeva.png"
+                alt="JEEVA Logo"
+                className="h-20 md:h-32  w-auto object-contain"
+              />
             </a>
           </div>
 
