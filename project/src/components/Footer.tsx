@@ -1,19 +1,19 @@
-import { Heart, Linkedin, Twitter, Instagram, Mail } from 'lucide-react';
-import { FooterWaveDivider, FooterPattern } from './illustrations/FooterIllustrations';
+import { Heart, Linkedin, Instagram, Mail, ArrowUp, ChevronRight } from 'lucide-react';
 
 export default function Footer() {
   const footerLinks = {
     product: [
-      { name: 'Features', href: '#demo' },
-      { name: 'For Hospitals', href: '#hospitals' },
-      { name: 'Pricing', href: '#contact' },
-      { name: 'Download App', href: '#contact' },
+      { name: 'Features', href: '/#demo' },
+      { name: 'For Hospitals', href: '/#hospitals' },
+      { name: 'Pricing', href: '/#contact' },
+      { name: 'Download App', href: '/#contact' },
     ],
     company: [
-      { name: 'About', href: '#about' },
-      { name: 'Team', href: '#team' },
-      { name: 'Events', href: '#events' },
-      { name: 'Contact', href: '#contact' },
+      { name: 'Home', href: '/' },
+      { name: 'About', href: '/#about' },
+      { name: 'Team', href: '/team' },
+      { name: 'Events', href: '/#events' },
+      { name: 'Contact', href: '/#contact' },
     ],
     legal: [
       { name: 'Privacy Policy', href: '#' },
@@ -23,113 +23,119 @@ export default function Footer() {
     ],
   };
 
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('/')) {
+      e.preventDefault();
+      window.history.pushState({}, '', href);
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <>
-      <div className="h-24">
-        <FooterWaveDivider />
-      </div>
-      <footer className="bg-[#1F2937] text-white pt-16 pb-8 px-6 relative overflow-hidden">
-        <FooterPattern />
-      <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-4 gap-12 mb-12">
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="text-3xl font-bold text-white">JEEVA</div>
+    <footer className="relative bg-slate-950 text-slate-300 pt-24 pb-12 overflow-hidden">
+      {/* Decorative background elements */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/5 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-600/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 mb-10">
+          {/* Brand Section */}
+          <div className="lg:col-span-4">
+            <div>
+              <a
+                href="/"
+                onClick={(e) => handleLinkClick(e, '/')}
+                className="inline-block transition-transform hover:scale-105 active:scale-95 duration-300"
+              >
+                <img
+                  src="https://ik.imagekit.io/DearAsutosh/jeeva.png"
+                  alt="JEEVA Logo"
+                  className="h-24 md:h-40 w-auto max-w-full object-contain"
+                />
+              </a>
             </div>
-            <p className="text-white/80 mb-6 leading-relaxed">
-              Saving lives one bed at a time.
+            <p className="text-slate-400 text-lg leading-relaxed mb-10 max-w-sm">
+              Revolutionizing emergency healthcare with real-time bed availability and seamless medical response across India.
             </p>
-            <div className="flex gap-3">
-              <a
-                href="#"
-                className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#3B82F6] transition-colors"
-              >
-                <Linkedin size={20} />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#3B82F6] transition-colors"
-              >
-                <Twitter size={20} />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#3B82F6] transition-colors"
-              >
-                <Instagram size={20} />
-              </a>
-              <a
-                href="mailto:hello@jeeva.care"
-                className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#3B82F6] transition-colors"
-              >
-                <Mail size={20} />
-              </a>
+            <div className="flex gap-4">
+              {[
+                { icon: <Linkedin size={20} />, href: "https://www.linkedin.com/company/the-jeeva/", label: "LinkedIn", color: "hover:bg-[#0A66C2]" },
+                { icon: <Instagram size={20} />, href: "https://www.instagram.com/thejeeva.in?igsh=bG0yZDVwbnI4YWhv", label: "Instagram", color: "hover:bg-[#E4405F]" },
+                { icon: <Mail size={20} />, href: "mailto:teamjeevaservices@gmail.com", label: "Email", color: "hover:bg-blue-600" }
+              ].map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`w-12 h-12 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-slate-400 transition-all duration-500 hover:text-white hover:shadow-lg hover:shadow-blue-500/20 active:scale-90 ${social.color}`}
+                  aria-label={social.label}
+                >
+                  {social.icon}
+                </a>
+              ))}
             </div>
           </div>
 
-          <div>
-            <h3 className="font-bold text-lg mb-4">Product</h3>
-            <ul className="space-y-3">
-              {footerLinks.product.map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="text-white/80 hover:text-white hover:underline transition-colors"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-bold text-lg mb-4">Company</h3>
-            <ul className="space-y-3">
-              {footerLinks.company.map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="text-white/80 hover:text-white hover:underline transition-colors"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-bold text-lg mb-4">Legal</h3>
-            <ul className="space-y-3">
-              {footerLinks.legal.map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="text-white/80 hover:text-white hover:underline transition-colors"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
+          {/* Links Sections */}
+          <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-12">
+            {[
+              { title: 'Product', links: footerLinks.product },
+              { title: 'Company', links: footerLinks.company },
+              { title: 'Legal', links: footerLinks.legal }
+            ].map((section) => (
+              <div key={section.title}>
+                <h3 className="text-white font-bold text-lg mb-8 tracking-tight capitalize border-l-4 border-blue-600 pl-4">
+                  {section.title}
+                </h3>
+                <ul className="space-y-4">
+                  {section.links.map((link) => (
+                    <li key={link.name}>
+                      <a
+                        href={link.href}
+                        onClick={(e) => handleLinkClick(e, link.href)}
+                        className="group flex items-center text-slate-400 hover:text-white transition-colors duration-300"
+                      >
+                        <ChevronRight size={14} className="opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300 text-blue-500" />
+                        <span className="group-hover:translate-x-1 transition-transform duration-300">
+                          {link.name}
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-white/60 text-sm">
-              © 2025 JEEVA. All rights reserved.
+        {/* Bottom Section */}
+        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="order-2 md:order-1 flex flex-col items-center md:items-start gap-2">
+            <p className="text-slate-500 text-sm">
+              © {new Date().getFullYear()} <span className="text-slate-400 font-semibold">JEEVA Health Technologies</span>. All rights reserved.
             </p>
-            <div className="flex items-center gap-2 text-sm text-white/60">
+            <div className="flex items-center gap-2 text-sm text-slate-500">
               <span>Made with</span>
-              <Heart size={16} className="text-[#EF4444] fill-[#EF4444]" />
-              <span>in Odisha</span>
+              <Heart size={14} className="text-rose-500 fill-rose-500 animate-pulse" />
+              <span>by <a href="https://www.linkedin.com/in/asutoshsahoo/" className="text-slate-400 hover:text-blue-500 transition-colors font-medium">Asutosh</a></span>
             </div>
           </div>
+
+          <button
+            onClick={scrollToTop}
+            className="order-1 md:order-2 group flex items-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 px-6 py-3 rounded-2xl transition-all duration-300 hover:shadow-xl hover:shadow-white/5 active:scale-95"
+          >
+            <span className="text-sm font-bold text-white uppercase tracking-wider">Back to Top</span>
+            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center group-hover:-translate-y-1 transition-transform duration-300">
+              <ArrowUp size={18} className="text-white" />
+            </div>
+          </button>
         </div>
       </div>
-      </footer>
-    </>
+    </footer>
   );
 }

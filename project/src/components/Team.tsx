@@ -1,123 +1,86 @@
-import { Linkedin, Github, Mail } from 'lucide-react';
+import { Linkedin } from 'lucide-react';
+import teamData from '../data/team.json';
+
+interface TeamMember {
+  name: string;
+  designation: string;
+  background?: string;
+  photo: string;
+  social: string;
+}
 
 export default function Team() {
-  const teamMembers = [
-    {
-      name: 'Ayush Kumar',
-      role: 'Founder & Lead Developer',
-      quote: 'Building JEEVA to save lives, one bed at a time.',
-      initial: 'A',
-      color: 'bg-[#3B82F6]',
-    },
-    {
-      name: 'Shreya Patel',
-      role: 'Co-Founder & Hospital Partnerships',
-      quote: 'Connecting hospitals with families in need.',
-      initial: 'S',
-      color: 'bg-[#10B981]',
-    },
-    {
-      name: 'Rahul Mishra',
-      role: 'Backend Engineer',
-      quote: 'Making real-time updates seamless and reliable.',
-      initial: 'R',
-      color: 'bg-[#F59E0B]',
-    },
-    {
-      name: 'Priya Sharma',
-      role: 'UI/UX Designer',
-      quote: 'Designing interfaces that work under pressure.',
-      initial: 'P',
-      color: 'bg-[#EF4444]',
-    },
-    {
-      name: 'Karthik Reddy',
-      role: 'Data Scientist',
-      quote: 'Predicting bed availability with AI.',
-      initial: 'K',
-      color: 'bg-[#8B5CF6]',
-    },
-    {
-      name: 'Ananya Das',
-      role: 'Community Manager',
-      quote: 'Building trust, one hospital at a time.',
-      initial: 'A',
-      color: 'bg-[#EC4899]',
-    },
-  ];
+  const leadership = teamData.founders_leadership as TeamMember[];
 
   return (
     <section id="team" className="py-24 px-6 bg-white">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold text-[#1F2937] mb-6">
-            Meet the Team
+            Founders & Leadership
           </h2>
           <p className="text-xl text-[#6B7280] max-w-2xl mx-auto">
-            Young innovators on a mission to transform emergency healthcare
+            Visionaries and innovators dedicated to transforming emergency healthcare in India.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {teamMembers.map((member, index) => (
+          {leadership.map((member, index) => (
             <div
               key={index}
-              className="bg-white border border-[#E5E7EB] rounded-2xl p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 text-center"
+              className="group relative bg-white border border-gray-100/80 rounded-[2rem] p-10 transition-all duration-500 hover:shadow-[0_22px_50px_-12px_rgba(59,130,246,0.12)] hover:-translate-y-3 animate-fade-up overflow-hidden text-center"
+              style={{ animationDelay: `${index * 150}ms` }}
             >
-              <div
-                className={`w-32 h-32 ${member.color} rounded-full mx-auto mb-6 flex items-center justify-center text-white text-4xl font-bold shadow-lg`}
-              >
-                {member.initial}
+              {/* Subtle top accent gradient */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#3B82F6]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+              <div className="relative mb-10 mx-auto w-36 h-36">
+                <div className="absolute inset-0 bg-[#3B82F6]/5 rounded-full scale-110 group-hover:scale-125 transition-transform duration-700 blur-2xl"></div>
+                <div className="relative w-full h-full p-2 bg-white rounded-full shadow-sm z-10 transition-transform duration-500 group-hover:scale-105">
+                  <img
+                    src={member.photo}
+                    alt={member.name}
+                    className="w-full h-full rounded-full object-cover border-2 border-gray-50"
+                  />
+                </div>
               </div>
 
-              <h3 className="text-2xl font-bold text-[#1F2937] mb-2">
+              <h3 className="text-2xl font-bold text-[#1F2937] mb-2 tracking-tight transition-colors duration-300 group-hover:text-[#3B82F6]">
                 {member.name}
               </h3>
 
-              <p className="text-[#3B82F6] font-medium mb-4">{member.role}</p>
-
-              <p className="text-[#6B7280] italic leading-relaxed mb-6">
-                "{member.quote}"
+              <p className="text-[#3B82F6] font-bold mb-6 text-xs uppercase tracking-[0.2em]">
+                {member.designation}
               </p>
 
-              <div className="flex justify-center gap-4">
+              {member.background && (
+                <p className="text-[#64748B] leading-[1.8] mb-10 text-[0.9375rem] max-w-[280px] mx-auto font-medium">
+                  {member.background}
+                </p>
+              )}
+
+              <div className="flex justify-center pt-2">
                 <a
-                  href="#"
-                  className="w-10 h-10 bg-[#F3F4F6] rounded-full flex items-center justify-center hover:bg-[#3B82F6] hover:text-white transition-colors"
+                  href={member.social}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group/social w-12 h-12 bg-gray-50 text-[#6B7280] rounded-2xl flex items-center justify-center hover:bg-[#3B82F6] hover:text-white transition-all duration-500 hover:shadow-lg hover:shadow-blue-500/20 active:scale-95"
+                  aria-label={`${member.name}'s social profile`}
                 >
-                  <Linkedin size={18} />
-                </a>
-                <a
-                  href="#"
-                  className="w-10 h-10 bg-[#F3F4F6] rounded-full flex items-center justify-center hover:bg-[#3B82F6] hover:text-white transition-colors"
-                >
-                  <Github size={18} />
-                </a>
-                <a
-                  href="#"
-                  className="w-10 h-10 bg-[#F3F4F6] rounded-full flex items-center justify-center hover:bg-[#3B82F6] hover:text-white transition-colors"
-                >
-                  <Mail size={18} />
+                  <Linkedin size={20} className="transition-transform duration-500 group-hover/social:rotate-[360deg]" />
                 </a>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-16 text-center">
-          <div className="bg-gradient-to-r from-[#3B82F6] to-[#10B981] rounded-2xl p-12 text-white">
-            <h3 className="text-3xl font-bold mb-4">Join Our Team</h3>
-            <p className="text-xl mb-8 opacity-90">
-              Want to help us save lives? We're always looking for passionate
-              people.
-            </p>
-            <a
-              href="#contact"
-              className="inline-block bg-white text-[#3B82F6] px-8 py-4 rounded-xl font-medium hover:shadow-xl transition-all duration-300 hover:scale-105"
-            >
-              View Open Positions
-            </a>
-          </div>
+        <div className="mt-16 text-center animate-fade-in">
+          <button
+            onClick={() => window.history.pushState({}, '', '/team')}
+            className="inline-flex items-center gap-2 bg-[#1F2937] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#374151] transition-all transform hover:scale-[1.02] shadow-lg"
+          >
+            Explore All Team Members
+          </button>
         </div>
       </div>
     </section>
