@@ -17,11 +17,11 @@ export default function Advisors() {
                     <div className="w-24 h-1 bg-[#0D9488] mx-auto mb-8"></div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-12 items-center justify-center">
+                <div className="grid md:grid-cols-3 gap-12 items-center justify-center">
                     {advisors.map((advisor, index) => (
                         <div
                             key={index}
-                            className={`group bg-white border border-gray-100 rounded-3xl p-8 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col items-center text-center animate-fade-up`}
+                            className={`group bg-white border border-gray-200 rounded-3xl p-8 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col items-center text-center animate-fade-up`}
                             style={{ animationDelay: `${index * 200}ms` }}
                         >
                             <div className="relative mb-8">
@@ -29,7 +29,7 @@ export default function Advisors() {
                                 <img
                                     src={advisor.photo}
                                     alt={advisor.name}
-                                    className="w-40 h-40 rounded-full object-cover relative z-10 border-4 border-white shadow-xl group-hover:scale-105 transition-transform duration-500"
+                                    className="w-40 h-40 rounded-full object-cover relative z-10 border-4 border-black shadow-xl group-hover:scale-105 transition-transform duration-500"
                                 />
                             </div>
 
@@ -40,11 +40,6 @@ export default function Advisors() {
                             <p className="text-[#0D9488] font-semibold mb-3 tracking-wide text-sm uppercase">
                                 {advisor.designation}
                             </p>
-
-                            <p className="text-[#6B7280] text-base mb-8 leading-relaxed max-w-xs">
-                                {advisor.background}
-                            </p>
-
                             <a
                                 href={advisor.social}
                                 target="_blank"
