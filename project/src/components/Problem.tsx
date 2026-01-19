@@ -22,7 +22,7 @@ const ProblemSection = () => {
           <div className="w-16 h-1 bg-destructive mx-auto mb-8"></div>
 
           <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center">
-            The Reality We're Changing
+            The Problem We Are Solving
           </h2>
 
           <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
@@ -59,7 +59,7 @@ const ProblemSection = () => {
                 </div>
               </div>
               <p className="text-lg text-center mt-6 text-gray-600">
-                Bed shortage in Odisha
+                Hospital Bed Shortage in Odisha
               </p>
             </div>
 
@@ -77,24 +77,24 @@ const ProblemSection = () => {
               </div>
               <p className="text-5xl font-bold mb-2">30M</p>
               <p className="text-lg text-muted-foreground text-center">
-                People affected by bed shortage
+               People Affected by the Hospital Bed Shortage
               </p>
             </div>
           </div>
 
           {/* Hospital Journey Map */}
           <div className="bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-200 rounded-2xl p-8 mb-12 shadow-lg">
-            <h3 className="text-2xl font-bold mb-8 text-center text-gray-800">The Frustrating Journey</h3>
+            <h3 className="text-2xl font-bold mb-8 text-center text-gray-800">The Difficult Journey</h3>
             <div className="flex flex-col md:flex-row items-center justify-between gap-4 relative">
               {/* Path line */}
               <div className="hidden md:block absolute top-8 left-0 right-0 h-1 bg-gradient-to-r from-red-500 via-orange-500 to-green-500 opacity-30"></div>
 
               {[
                 { icon: "🚑", label: "Accident", time: "0 min", bgColor: "bg-red-500", textColor: "text-white" },
-                { icon: "❓", label: "Confused", time: "5 min", bgColor: "bg-red-400", textColor: "text-white" },
-                { icon: "❌", label: "Hospital 1 Full", time: "20 min", bgColor: "bg-orange-500", textColor: "text-white" },
-                { icon: "❌", label: "Hospital 2 Full", time: "35 min", bgColor: "bg-orange-400", textColor: "text-white" },
-                { icon: "✅", label: "Finally Found", time: "45 min", bgColor: "bg-green-500", textColor: "text-white" },
+                { icon: "❓", label: "Confusion and Panic", time: "5 min", bgColor: "bg-red-400", textColor: "text-white" },
+                { icon: "❌", label: "Hospital 1: No Beds Available", time: "20 min", bgColor: "bg-orange-500", textColor: "text-white" },
+                { icon: "❌", label: "Hospital 2: No Beds Available", time: "35 min", bgColor: "bg-orange-400", textColor: "text-white" },
+                { icon: "✅", label: "Bed Finally Found", time: "45 min", bgColor: "bg-green-500", textColor: "text-white" },
               ].map((step, i) => (
                 <div key={i} className="flex flex-col items-center z-10 animate-fade-in" style={{ animationDelay: `${i * 0.15}s` }}>
                   <div className={`w-16 h-16 rounded-full ${step.bgColor} flex items-center justify-center text-2xl mb-2 shadow-lg hover:scale-110 transition-transform duration-300`}>
@@ -106,13 +106,13 @@ const ProblemSection = () => {
               ))}
             </div>
             <p className="text-center mt-8 text-xl font-bold text-red-600">
-              Total wasted time: 45+ minutes
+              Total Time Wasted: More Than 45 Minutes
             </p>
           </div>
 
           {/* Final Message */}
           <div className="text-center space-y-6">
-            <p className="text-xl font-medium">Lives lost to preventable delays.</p>
+            <p className="text-xl font-medium">Lives are lost-not because care doesn’t exist, but because it’s found too late.</p>
           </div>
 
           <div className="mt-12">

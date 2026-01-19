@@ -1,5 +1,5 @@
 import { Button } from "./ui/button";
-import { Phone, MapPin, Heart } from "lucide-react";
+import { Phone, MapPin } from "lucide-react";
 import { EmergencyResponseIllustration } from "./illustrations/HeroIllustrations";
 
 export const Hero = () => {
@@ -15,11 +15,6 @@ export const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Content */}
           <div className="space-y-8 animate-fade-in">
-            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold">
-              <Heart className="w-4 h-4 fill-primary" />
-              <span>Coolest Projects 2025 Winner</span>
-            </div>
-
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
               Find Available{" "}
               <span className="text-gradient">Hospital Beds</span>{" "}
@@ -27,7 +22,7 @@ export const Hero = () => {
             </h1>
 
             <p className="text-xl text-muted-foreground leading-relaxed">
-              During medical emergencies, every second counts. JEEVA connects you to hospitals with available beds instantly—turning 45 minutes of panic into 5 minutes of relief.
+              Jeeva is a real-time emergency hospital bed availability platform designed to reduce critical delays when every second counts. Jeeva transforms emergency hospital navigation into rapid, informed decisions.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
