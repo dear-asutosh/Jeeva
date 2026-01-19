@@ -18,10 +18,11 @@ export default function Navigation() {
   const navLinks = [
     { name: 'Home', href: '/', isRoute: true },
     { name: 'About', href: '/#about' },
-    { name: 'Team', href: '/#team' },
+    { name: 'Team', href: '/team' },
     { name: 'Events', href: '/#events' },
-    { name: 'For Hospitals', href: '/#hospitals' },
+    { name: 'Gallery', href: '/gallery' },
     { name: 'Contact', href: '/#contact' },
+    { name: 'For Hospitals', href: '/#hospitals' },
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {

@@ -8,13 +8,13 @@ import { LiveDemo } from './components/LiveDemo';
 import { ImpactMetrics } from './components/ImpactMetrics';
 import OurStory from './components/OurStory';
 import Advisors from './components/Advisors';
-import Events from './components/Events';
 import ForHospitals from './components/ForHospitals';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import HowItWorksSection from './components/HowItWorksSection';
-import Team from './components/Team';
 import TeamPage from './pages/TeamPage';
+import GalleryPage from './pages/GalleryPage';
+import Gallery from './components/Gallery/Gallery';
 
 function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname + window.location.hash);
@@ -58,6 +58,8 @@ function App() {
       <Navigation />
       {currentPath.startsWith('/team') ? (
         <TeamPage />
+      ) : currentPath.startsWith('/gallery') ? (
+        <GalleryPage />
       ) : (
         <>
           <Hero />
@@ -69,9 +71,8 @@ function App() {
           <ImpactMetrics />
           <OurStory />
           <Advisors />
-          <Team />
-          <Events />
           <ForHospitals />
+          <Gallery />
           <Contact />
         </>
       )}
