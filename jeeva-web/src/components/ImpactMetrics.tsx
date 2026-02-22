@@ -116,7 +116,7 @@ export const ImpactMetrics = () => {
       graphic: (
         <svg viewBox="0 0 500 300" className="w-full h-auto">
           <g>
-            {[1, 2, 3, 4, 5].map((month, i) => {
+            {[1, 2, 3, 4, 5].map((i) => {
               const height = Math.min(((counts.hospitals / 5) * (i + 1)) * 40, (i + 1) * 40);
               return (
                 <rect
